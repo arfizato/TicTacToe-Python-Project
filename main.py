@@ -7,13 +7,13 @@ import tkinter.font as font
 
 # checking if one of the players won 
 def checkForWin(mat,l,c,xo):
-    # checking main diagonal
         
     prevl=l-1 if l>0 else 2
     prevc=c-1 if c>0 else 2
     nextl=l+1 if l<2 else 0
     nextc=c+1 if c<2 else 0
 
+    # checking main diagonal
     if (l==c):
         if (mat[prevl][prevc]+mat[nextl][nextc]+mat[l][c]==xo*3):
             return TRUE
@@ -42,8 +42,7 @@ def buttonClicked(text,button,l,c):
         #only changes color if the player chooses the "only color" option before he starts playing
         if (firstChar==""):     
             button["bg"]="#dbf9db"
-            #button["relief"]= "sunken"
-        
+            #button["relief"]= "sunken"        
 
         text.set(firstChar)
         mat[l-1][c]=firstChar 
@@ -70,6 +69,7 @@ def buttonClicked(text,button,l,c):
                 stopPlaying=TRUE          
             root.destroy()  
 
+    #in case of numOfButtonsDisabled==9 then we know it's a draw unless someone won with the last button click 
     numOfButtonsDisabled+=1
     if numOfButtonsDisabled==9 and atLeastOnePlayerWon == FALSE:
         box=messagebox.askquestion("It's a TIE ", "\tSCORE:  "+str(playerOneWins)+" - "+str(playerTwoWins)+"\nWould You Like To Keep Playing?",icon = 'question')
@@ -80,7 +80,7 @@ def buttonClicked(text,button,l,c):
 #picking what to fill the buttons with
 def changeText(text,button):
     global firstChar, secondChar, charList, charNumber
-    charNumber= charNumber+1 if charNumber<4 else 0
+    charNumber= charNumber+1 if charNumber<4 else 0 #charNumber is the variables traversing the charList[][] 
     firstChar=charList[charNumber][0] 
     secondChar=charList[charNumber][1]
     text.set(charList[charNumber][2])   
@@ -88,79 +88,84 @@ def changeText(text,button):
 
 """--------------------------Main--------------------------"""    
 global stopPlaying, playerOneWins, playerTwoWins
-stopPlaying=FALSE
-playerTwoWins=0
-playerOneWins=0
+stopPlaying=FALSE #boolean deciding when to stop the while loop: only becomes true if the player clicks no on the popup 
+playerTwoWins=0 #tracking how many times player 1 won 
+playerOneWins=0#tracking how many times player 2 won
 while (stopPlaying==FALSE):
     
-    charNumber=0
-    charList=[["O","X","X O"],["+","-","- +"],["B","A","A B"],["Y","X","X Y"],[""," ","Only Color"]]
-    mat=[["."]*3,["."]*3,["."]*3]
-    numOfButtonsDisabled=0
+    charNumber=0#variable selecing the subarrays containing the preferred symbols
+    charList=[["O","X","X O"],["+","-","- +"],["B","A","A B"],["Y","X","X Y"],[""," ","Only Color"]] # list of preferred symbols ("X O","A B", etc...) the user has to pick from
+    mat=[["."]*3,["."]*3,["."]*3] # matrix keeping count of who marked where 
+    numOfButtonsDisabled=0 # tracking if there's a draw or not 
         
     root = tk.Tk()
     root.title("Tic Tac toe")
     root.iconbitmap(r'images/TicTacToe.ico')
+    
     # define font
     myFontChoice = font.Font(family='Times',weight="bold",slant="italic")
     myFont = font.Font(family='Times',weight="bold")
-    #myFont = font.Font(family=)
 
-    # defining buttons                   and                      putting them on a grid 
 
     global x, firstChar, secondChar
     firstChar="X"
     secondChar="O"    
     x=0 
-    text0  = tk.StringVar()
-    text0.set("Click To Pick Variant")
 
-    text1  = tk.StringVar()
-    text2  = tk.StringVar()
-    text3  = tk.StringVar()
-
-    text4  = tk.StringVar()
-    text5  = tk.StringVar()
-    text6  = tk.StringVar()
-
-    text7  = tk.StringVar()
-    text8  = tk.StringVar()
-    text9  = tk.StringVar()
-    #text1.set("")
+    """------------------------------------Defining each button and putting it on the grid------------------------------------"""
+    #choiceButton is the button the user has to click on to pick preferred symbols "X O","A B", etc...
     choiceButton  = Button(root,textvariable=text0,width=38,height=5,fg="#323831",bg="#bbcab7", command= lambda: changeText(text0,choiceButton))
     choiceButton.grid(row=0 ,column=0, columnspan=3)
     choiceButton["font"]= myFontChoice
+    text0  = tk.StringVar()
+    text0.set("Click To Pick Variant")
 
+    #Row of [1,2,3]
     button1  = Button(root,textvariable=text1,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text1,button1,3,0) )
     button1.grid(row=3 ,column=0)
     button1["font"]= myFont
+    text1  = tk.StringVar()
+
     button2  = Button(root,textvariable=text2,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text2,button2,3,1) )
     button2.grid(row=3 ,column=1)
     button2["font"]= myFont
+    text2  = tk.StringVar()
+
     button3  = Button(root,textvariable=text3,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text3,button3,3,2) )
     button3.grid(row=3 ,column=2)
     button3["font"]= myFont
+    text3  = tk.StringVar()
 
+    #Row of [4,5,6]
     button4  = Button(root,textvariable=text4,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text4,button4,2,0) )
     button4.grid(row=2 ,column=0)
     button4["font"]= myFont
+    text4  = tk.StringVar()
+
     button5  = Button(root,textvariable=text5,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text5,button5,2,1) )
     button5.grid(row=2 ,column=1)
     button5["font"]= myFont
+    text5  = tk.StringVar()
+
     button6  = Button(root,textvariable=text6,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text6,button6,2,2) )
     button6.grid(row=2 ,column=2)
     button6["font"]= myFont
+    text6  = tk.StringVar()
 
+    #Row of [7,8,9]
     button7  = Button(root,textvariable=text7,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text7,button7,1,0) )
     button7.grid(row=1 ,column=0)
     button7["font"]= myFont
+    text7  = tk.StringVar()
+
     button8  = Button(root,textvariable=text8,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text8,button8,1,1) )
     button8.grid(row=1 ,column=1)
     button8["font"]= myFont
+    text8  = tk.StringVar()
+
     button9  = Button(root,textvariable=text9,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text9,button9,1,2) )
     button9.grid(row=1 ,column=2) 
     button9["font"]= myFont
+    text9  = tk.StringVar()
 
     root.mainloop()
-
-
