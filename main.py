@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
-
+""" GREAT COLOR PALETTES :https://imgur.com/Jmk6LEH """
 
 
 # checking if one of the players won 
@@ -37,46 +37,45 @@ def buttonClicked(text,button,l,c):
     choiceButton["fg"]="#000000"
 
     button["state"]= DISABLED
-    #button["relief"]= "sunken"
-    if (x%2==0):        
-        button["bg"]="#dbf9db"
+    if (x%2==0):   
+        #only changes color if the player chooses the "only color" option before he starts playing
+        if (firstChar==""):     
+            button["bg"]="#dbf9db"
+            #button["relief"]= "sunken"
+        
 
         text.set(firstChar)
         mat[l-1][c]=firstChar 
-        #print(checkForWin(mat,l-1,c,"X")) 
         if checkForWin(mat,l-1,c,firstChar):
-            box = messagebox.askquestion("Player 2 Won", "Would You Like To Keep Playing?")
+            box = messagebox.askquestion("Player 2 Won", "Would You Like To Keep Playing?",icon = 'question')
             if (box !='yes'):
-                #here i want to call RESTART
-                #print("stoppppppppppppppppp playing  ",stopPlaying)
-                stopPlaying=TRUE
-                #print("saha :)")             
+                stopPlaying=TRUE         
             root.destroy()      
     else:
-        button["bg"]="#f2ffc2"
+        #only changes color if the player chooses the "only color" option before he starts playing
+        if (firstChar ==""):
+            button["bg"]="#c8eed9"
+            #button["relief"]= "sunken"
+
         text.set(secondChar)
         mat[l-1][c]=secondChar
-        #print(checkForWin(mat,l-1,c,"O"))  
         if checkForWin(mat,l-1,c,secondChar):
-            box=messagebox.askquestion("Player 1 Won", "Would You Like To Keep Playing?")
+            box=messagebox.askquestion("Player 1 Won", "Would You Like To Keep Playing?",icon = 'question')
             if (box!='yes'):
-                #here i want to call RESTART
-                stopPlaying=TRUE
-                #print("saha :)")                
+                stopPlaying=TRUE          
             root.destroy()  
 
     numOfButtonsDisabled+=1
-    if numOfButtonsDisabled==9:
-        box=messagebox.askquestion("It's a TIE ", "Would You Like To Keep Playing?")
+    if numOfButtonsDisabled==9 and stopPlaying== FALSE:
+        box=messagebox.askquestion("It's a TIE ", "Would You Like To Keep Playing?",icon = 'question')
         if (box!='yes'):
             stopPlaying=TRUE
         root.destroy()
-    #print(mat)
 
 #picking what to fill the buttons with
 def changeText(text,button):
     global firstChar, secondChar, charList, charNumber
-    charNumber= charNumber+1 if charNumber<2 else 0
+    charNumber= charNumber+1 if charNumber<4 else 0
     firstChar=charList[charNumber][0] 
     secondChar=charList[charNumber][1]
     text.set(charList[charNumber][2])   
@@ -86,16 +85,15 @@ def changeText(text,button):
 global stopPlaying
 stopPlaying=FALSE
 while (stopPlaying==FALSE):
-    #print("stop playing  ",stopPlaying)
     
     charNumber=0
-    charList=[["X","O","X O"],["-","+","- +"],[""," ","Only Color"]]
+    charList=[["O","X","X O"],["+","-","- +"],["B","A","A B"],["Y","X","X Y"],[""," ","Only Color"]]
     mat=[["."]*3,["."]*3,["."]*3]
     numOfButtonsDisabled=0
         
     root = tk.Tk()
     root.title("Tic Tac toe")
-    #root.geometry("1000x1000")
+    root.iconbitmap(r'images/TicTacToe.ico')
 
     # defining buttons                   and                      putting them on a grid 
 
