@@ -41,7 +41,7 @@ def buttonClicked(text,button,l,c):
     if (x%2==0):   
         #only changes color if the player chooses the "only color" option before he starts playing
         if (firstChar==""):     
-            button["bg"]="#dbf9db"
+            button["bg"]="#630000"
             #button["relief"]= "sunken"        
 
         text.set(firstChar)
@@ -56,7 +56,8 @@ def buttonClicked(text,button,l,c):
     else:
         #only changes color if the player chooses the "only color" option before he starts playing
         if (firstChar ==""):
-            button["bg"]="#c8eed9"
+            #Color Combinations pink and pastel(bb8082,f6dfeb)  white and gray(ffffff,353535) brown and gray(897853,353535) pastel purple and pink(f6dfeb,dbd0ff) red and black(630000,1b1717)
+            button["bg"]="#1b1717"
             #button["relief"]= "sunken"
 
         text.set(secondChar)
@@ -108,8 +109,8 @@ while (stopPlaying==FALSE):
 
 
     global x, firstChar, secondChar
-    firstChar="X"
-    secondChar="O"    
+    firstChar="O"
+    secondChar="X"    
     x=0 
 
     """------------------------------------Defining each button and putting it on the grid------------------------------------"""
