@@ -6,8 +6,7 @@ Have fun trying it out.
 Any feedback is appreciated. 
 game icon credit: freepik.com 
 
-
---------------------------------------------------------------------USEFUL LINKS--------------------------------------------------------------------
+-----------------------------------------------------USEFUL LINKS--------------------------------------------------------------
 
 •Python Tkinter Entry – How to use
   https://pythonguides.com/python-tkinter-entry/
