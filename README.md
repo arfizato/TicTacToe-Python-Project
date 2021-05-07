@@ -31,4 +31,7 @@ game icon credit: freepik.com
 
 •Change Icon for Tkinter MessageBox
   https://www.geeksforgeeks.org/change-icon-for-tkinter-messagebox/
+  
+    -----------------------------------------------------Attribution--------------------------------------------------------------
+  Icons made by https://www.freepik.com
 
