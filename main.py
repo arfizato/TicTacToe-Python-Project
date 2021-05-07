@@ -41,7 +41,7 @@ def buttonClicked(text,button,l,c):
     if (x%2==0):   
         #only changes color if the player chooses the "only color" option before he starts playing
         if (firstChar==""):     
-            button["bg"]="#630000"
+            button["bg"]="#feecaa"
             #button["relief"]= "sunken"        
 
         text.set(firstChar)
@@ -57,7 +57,7 @@ def buttonClicked(text,button,l,c):
         #only changes color if the player chooses the "only color" option before he starts playing
         if (firstChar ==""):
             #Color Combinations pink and pastel(bb8082,f6dfeb)  white and gray(ffffff,353535) brown and gray(897853,353535) pastel purple and pink(f6dfeb,dbd0ff) red and black(630000,1b1717)
-            button["bg"]="#1b1717"
+            button["bg"]="#decc8c"
             #button["relief"]= "sunken"
 
         text.set(secondChar)
@@ -102,6 +102,7 @@ while (stopPlaying==FALSE):
     root = tk.Tk()
     root.title("Tic Tac toe")
     root.iconbitmap(r'images/TicTacToe.ico')
+    root.configure(bg="#c7dabf")
     
     # define font
     myFontChoice = font.Font(family='Times',weight="bold",slant="italic")
@@ -118,56 +119,56 @@ while (stopPlaying==FALSE):
     
     text0  = tk.StringVar()
     text0.set("Click To Pick Variant")
-    choiceButton  = Button(root,textvariable=text0,width=38,height=5,fg="#323831",bg="#bbcab7", command= lambda: changeText(text0,choiceButton))
-    choiceButton.grid(row=0 ,column=0, columnspan=3)
+    choiceButton  = Button(root,bd=0,textvariable=text0,width=38,height=5,fg="#323831",bg="#a3b996", command= lambda: changeText(text0,choiceButton))
+    choiceButton.grid(padx=1,pady=1,row=0 ,column=0, columnspan=3)
     choiceButton["font"]= myFontChoice
 
     #Row of [1,2,3]
     text1  = tk.StringVar()
-    button1  = Button(root,textvariable=text1,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text1,button1,3,0) )
-    button1.grid(row=3 ,column=0)
+    button1  = Button(root,bd=0,textvariable=text1,text="",width=12,height=5,bg="#bbca95", command= lambda: buttonClicked(text1,button1,3,0) )
+    button1.grid(padx=2,pady=1,row=3 ,column=0)
     button1["font"]= myFont
 
     text2  = tk.StringVar()
-    button2  = Button(root,textvariable=text2,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text2,button2,3,1) )
-    button2.grid(row=3 ,column=1)
+    button2  = Button(root,bd=0,textvariable=text2,text="",width=12,height=5,bg="#a3b996", command= lambda: buttonClicked(text2,button2,3,1) )
+    button2.grid(padx=1,pady=1,row=3 ,column=1)
     button2["font"]= myFont
 
     text3  = tk.StringVar()
-    button3  = Button(root,textvariable=text3,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text3,button3,3,2) )
-    button3.grid(row=3 ,column=2)
+    button3  = Button(root,bd=0,textvariable=text3,text="",width=12,height=5,bg="#bbca95", command= lambda: buttonClicked(text3,button3,3,2) )
+    button3.grid(padx=2,pady=1,row=3 ,column=2)
     button3["font"]= myFont
 
     #Row of [4,5,6]
     text4  = tk.StringVar()
-    button4  = Button(root,textvariable=text4,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text4,button4,2,0) )
-    button4.grid(row=2 ,column=0)
+    button4  = Button(root,bd=0,textvariable=text4,text="",width=12,height=5,bg="#a3b996", command= lambda: buttonClicked(text4,button4,2,0) )
+    button4.grid(padx=2,pady=1,row=2 ,column=0)
     button4["font"]= myFont
 
     text5  = tk.StringVar()
-    button5  = Button(root,textvariable=text5,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text5,button5,2,1) )
-    button5.grid(row=2 ,column=1)
+    button5  = Button(root,bd=0,textvariable=text5,text="",width=12,height=5,bg="#bbca95", command= lambda: buttonClicked(text5,button5,2,1) )
+    button5.grid(padx=1,pady=1,row=2 ,column=1)
     button5["font"]= myFont
 
     text6  = tk.StringVar()
-    button6  = Button(root,textvariable=text6,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text6,button6,2,2) )
-    button6.grid(row=2 ,column=2)
+    button6  = Button(root,bd=0,textvariable=text6,text="",width=12,height=5,bg="#a3b996", command= lambda: buttonClicked(text6,button6,2,2) )
+    button6.grid(padx=2,pady=1,row=2 ,column=2)
     button6["font"]= myFont
 
     #Row of [7,8,9]
     text7  = tk.StringVar()
-    button7  = Button(root,textvariable=text7,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text7,button7,1,0) )
-    button7.grid(row=1 ,column=0)
+    button7  = Button(root,bd=0,textvariable=text7,text="",width=12,height=5,bg="#bbca95", command= lambda: buttonClicked(text7,button7,1,0) )
+    button7.grid(padx=2,pady=1,row=1 ,column=0)
     button7["font"]= myFont
 
     text8  = tk.StringVar()
-    button8  = Button(root,textvariable=text8,text="",width=12,height=5,bg="#bbcab7", command= lambda: buttonClicked(text8,button8,1,1) )
-    button8.grid(row=1 ,column=1)
+    button8  = Button(root,bd=0,textvariable=text8,text="",width=12,height=5,bg="#a3b996", command= lambda: buttonClicked(text8,button8,1,1) )
+    button8.grid(padx=1,pady=1,row=1 ,column=1)
     button8["font"]= myFont
 
     text9  = tk.StringVar()
-    button9  = Button(root,textvariable=text9,text="",width=12,height=5,bg="#e1f1dd", command= lambda: buttonClicked(text9,button9,1,2) )
-    button9.grid(row=1 ,column=2) 
+    button9  = Button(root,bd=0,textvariable=text9,text="",width=12,height=5,bg="#bbca95", command= lambda: buttonClicked(text9,button9,1,2) )
+    button9.grid(padx=2,pady=1,row=1 ,column=2) 
     button9["font"]= myFont
 
 
