@@ -4,27 +4,45 @@ from tkinter import messagebox
 import tkinter.font as font
 """ GREAT COLOR PALETTES :https://imgur.com/Jmk6LEH """
 
-
+def insertWinButtons(xo,l,c,nextl,nextc,prevl,prevc):
+    winButtonOne= Button(root,bd=0,text=xo,width=12,height=5,fg="#323831",bg="#a6e22e")
+    winButtonOne.grid(row=l+1,column=c)
+    winButtonOne["font"]= myFont
+        
+    winButtonTwo= Button(root,bd=0,text=xo,width=12,height=5,fg="#323831",bg="#a6e22e")
+    winButtonTwo.grid(row=nextl+1,column=nextc)
+    winButtonTwo["font"]= myFont
+        
+    winButtonThree= Button(root,bd=0,text=xo,width=12,height=5,fg="#323831",bg="#a6e22e")
+    winButtonThree.grid(row=prevl+1,column=prevc)
+    winButtonThree["font"]= myFont
 # checking if one of the players won 
 def checkForWin(mat,l,c,xo):
-        
+      
     prevl=l-1 if l>0 else 2
     prevc=c-1 if c>0 else 2
     nextl=l+1 if l<2 else 0
     nextc=c+1 if c<2 else 0
-
+    
+    
     # checking main diagonal
     if (l==c):
         if (mat[prevl][prevc]+mat[nextl][nextc]+mat[l][c]==xo*3):
+            insertWinButtons(xo,l,c,nextl,nextc,prevl,prevc)
             return TRUE
     # checking the opposite diagonal 
     elif (l+c==2): 
         if (mat[prevl][nextc]+mat[nextl][prevc]+mat[l][c]==xo*3):
+            insertWinButtons(xo,l,c,prevl,nextc,nextl,prevc)
             return TRUE   
     #checking lines and columns 
-    if(mat[prevl][c]+mat[nextl][c]+mat[l][c]==xo*3 or mat[l][prevc]+mat[l][nextc]+mat[l][c]==xo*3):
+    if(mat[prevl][c]+mat[nextl][c]+mat[l][c]==xo*3 ):
+        insertWinButtons(xo,l,c,nextl,c,prevl,c)
         return TRUE
-    else:
+    elif mat[l][prevc]+mat[l][nextc]+mat[l][c]==xo*3:
+        insertWinButtons(xo,l,c,l,nextc,l,prevc)
+        return TRUE
+    else: 
         return FALSE
         
 # Defining the functions for the buttons 
@@ -178,3 +196,15 @@ while (stopPlaying==FALSE):
 
 
     root.mainloop()
+"""
+
+
+ █████╗ ██████╗ ███████╗██╗███████╗ █████╗ ████████╗ ██████╗ 
+██╔══██╗██╔══██╗██╔════╝██║╚══███╔╝██╔══██╗╚══██╔══╝██╔═══██╗
+███████║██████╔╝█████╗  ██║  ███╔╝ ███████║   ██║   ██║   ██║
+██╔══██║██╔══██╗██╔══╝  ██║ ███╔╝  ██╔══██║   ██║   ██║   ██║
+██║  ██║██║  ██║██║     ██║███████╗██║  ██║   ██║   ╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
+                                                             
+
+"""
