@@ -86,6 +86,10 @@ def changeText(text,button):
     secondChar=charList[charNumber][1]
     text.set(charList[charNumber][2])   
 
+def onClose():
+    global stopPlaying
+    stopPlaying=TRUE
+    root.destroy()
 
 """--------------------------Main--------------------------"""    
 global stopPlaying, playerOneWins, playerTwoWins
@@ -103,6 +107,7 @@ while (stopPlaying==FALSE):
     root.title("Tic Tac toe")
     root.iconbitmap(r'images/TicTacToe.ico')
     root.configure(bg="#c7dabf")
+    root.protocol('WM_DELETE_WINDOW', onClose)
     
     # define font
     myFontChoice = font.Font(family='Times',weight="bold",slant="italic")
