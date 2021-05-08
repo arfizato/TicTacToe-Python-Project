@@ -4,8 +4,8 @@ This is my first time working on something with python. Learning its basics and 
 
 This code is written me. It's not a masterpiece just yet but it gets the job done. a TicTacToe game as requested by my Python professor.
 Have fun trying it out.
-Any feedback is appreciated. 
-game icon credit: freepik.com 
+Any feedback is appreciated. ![image](https://user-images.githubusercontent.com/33662900/117556233-93eb0700-b05e-11eb-8f8a-825a5c054283.png)
+
 
 -----------------------------------------------------USEFUL LINKS--------------------------------------------------------------
 
